@@ -1,0 +1,31 @@
+Implement Common Sorting Algorithms
+- InsertionSort
+- SelectionSort
+- BubbleSort
+- QuickSort
+- MergeSort
+- HeapSort
+- CountingSort
+
+Implement Common Data Structures and Operations
+- (Binary)Tree
+  - DFS
+    - PostOrder
+    - PreOrder
+    - InOrder (Binary)
+  - BFS
+- Heap
+  - Push
+  - Pop
+- Graph
+  - DFS
+  - BFS
+  - ShortestPath
+- LinkedList
+  - PushFront
+  - PushBack
+  - PopFront
+  - PopBack
+  - InsertAt
+  - RemoveAt
+  - Find
