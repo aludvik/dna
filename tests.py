@@ -94,9 +94,9 @@ def test_graph():
     #  --- n4
     assert(print_if_ne(g.dfs(n0), [n0, n4, n3, n2]))
     assert(print_if_ne(g.bfs(n0), [n0, n3, n4, n2]))
-    assert(print_if_ne(g.shortest_path(n0, n3), 1))
-    assert(print_if_ne(g.shortest_path(n0, n4), 1))
-    assert(print_if_ne(g.shortest_path(n0, n2), 2))
+    assert(print_if_ne(len(g.shortest_path(n0, n3)), 1))
+    assert(print_if_ne(len(g.shortest_path(n0, n4)), 1))
+    assert(print_if_ne(len(g.shortest_path(n0, n2)), 2))
 
     # 0   6 - - - +
     # |   |       |
@@ -118,15 +118,15 @@ def test_graph():
     g.add_edge(6, 8)
     assert(print_if_ne(g.dfs(0), [0, 1, 3, 6, 8, 4, 7, 5, 2]))
     assert(print_if_ne(g.bfs(0), [0, 1, 2, 3, 5, 4, 6, 7, 8]))
-    assert(print_if_ne(g.shortest_path(0, 0), 0))
-    assert(print_if_ne(g.shortest_path(0, 1), 1))
-    assert(print_if_ne(g.shortest_path(0, 2), 2))
-    assert(print_if_ne(g.shortest_path(0, 3), 2))
-    assert(print_if_ne(g.shortest_path(0, 4), 3))
-    assert(print_if_ne(g.shortest_path(0, 5), 3))
-    assert(print_if_ne(g.shortest_path(0, 6), 3))
-    assert(print_if_ne(g.shortest_path(0, 7), 4))
-    assert(print_if_ne(g.shortest_path(0, 8), 4))
+    assert(print_if_ne(len(g.shortest_path(0, 0)), 0))
+    assert(print_if_ne(len(g.shortest_path(0, 1)), 1))
+    assert(print_if_ne(len(g.shortest_path(0, 2)), 2))
+    assert(print_if_ne(len(g.shortest_path(0, 3)), 2))
+    assert(print_if_ne(len(g.shortest_path(0, 4)), 3))
+    assert(print_if_ne(len(g.shortest_path(0, 5)), 3))
+    assert(print_if_ne(len(g.shortest_path(0, 6)), 3))
+    assert(print_if_ne(len(g.shortest_path(0, 7)), 4))
+    assert(print_if_ne(len(g.shortest_path(0, 8)), 4))
 
 if __name__ == "__main__":
     main()

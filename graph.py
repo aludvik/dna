@@ -79,14 +79,21 @@ class Graph:
         return order
 
     def shortest_path(self, start, end):
-        queue = deque([(start, 0)])
-        visited = [False] * len(self.__nodes)
+        queue = deque([(start, 0, -1)])
+        distance = [-1] * len(self.__nodes)
+        previous = [-1] * len(self.__nodes)
         while queue:
-            u, d = queue.popleft()
-            if u == end:
-                return d
-            if not visited[u]:
-                visited[u] = True
+            u, d, p = queue.popleft()
+            if distance[u] == -1:
+                distance[u] = d
+                previous[u] = p
                 for v in self.__nodes[u].neighbors():
-                    queue.append((v, d+1))
-        return -1
+                    queue.append((v, d+1, u))
+
+        path = []
+        while previous[end] != -1:
+            path.append((previous[end], end))
+            end = previous[end]
+        path.reverse()
+
+        return path
