@@ -2,6 +2,7 @@ import random
 
 from sort import *
 from graph import *
+from heap import *
 
 def main():
     test_sort(insertion_sort)
@@ -149,6 +150,24 @@ def test_graph():
     assert(print_if_ne(len(g.shortest_path(0, 6)), 3))
     assert(print_if_ne(len(g.shortest_path(0, 7)), 4))
     assert(print_if_ne(len(g.shortest_path(0, 8)), 4))
+
+def test_heap():
+    h = BinaryMaxHeap()
+    h.insert(3)
+    assert(h.top() == 3)
+    h.insert(5)
+    assert(h.top() == 5)
+    h.insert(2)
+    assert(h.top() == 5)
+    h.insert(1)
+    assert(h.top() == 5)
+    h.insert(1000)
+    assert(h.top() == 1000)
+    assert(h.extract() == 1000)
+    assert(h.extract() == 5)
+    assert(h.extract() == 3)
+    assert(h.extract() == 2)
+    assert(h.extract() == 1)
 
 if __name__ == "__main__":
     main()
