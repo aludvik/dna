@@ -160,6 +160,55 @@ def merge_sort_iterative(l):
     l.clear()
     l.extend(list_stack[0])
 
+def heap_sort_left(i):
+    return 2 * i + 1
+
+def heap_sort_right(i):
+    return 2 * i + 2
+
+def heap_sort_swap(l, i, j):
+    l[i], l[j] = l[j], l[i]
+
+def heap_sort_sift_down_once(l, i, len):
+    if heap_sort_left(i) < len and heap_sort_right(i) < len:
+        if l[i] < l[heap_sort_left(i)]:
+            if l[heap_sort_left(i)] < l[heap_sort_right(i)]:
+                # parent < left child < right child
+                heap_sort_swap(l, i, heap_sort_right(i))
+                return heap_sort_right(i)
+            else:
+                # parent < right child < left child
+                # -or- right child < parent < # left child
+                heap_sort_swap(l, i, heap_sort_left(i))
+                return heap_sort_left(i)
+
+    if heap_sort_left(i) < len:
+        if l[i] < l[heap_sort_left(i)]:
+            heap_sort_swap(l, i, heap_sort_left(i))
+            return heap_sort_left(i)
+
+    if heap_sort_right(i) < len:
+        if l[i] < l[heap_sort_right(i)]:
+            heap_sort_swap(l, i, heap_sort_right(i))
+            return heap_sort_right(i)
+
+    return None
+
+def heap_sort_sift_down(l, i, len):
+    while i is not None:
+        i = heap_sort_sift_down_once(l, i, len)
+
+def heapify(l):
+    # import pdb; pdb.set_trace()
+    for i in range(len(l) // 2, 0, -1):
+        heap_sort_sift_down(l, i - 1, len(l))
+
+def heap_sort(l):
+    heapify(l)
+    for i in range(len(l) - 1, 0, -1):
+        heap_sort_swap(l, 0, i)
+        heap_sort_sift_down(l, 0, i)
+
 def counting_sort(l, k=10):
     count = [0] * k
     for i in l:

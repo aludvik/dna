@@ -22,6 +22,12 @@ def main():
     test_sort(merge_sort_iterative)
     stress_sort(merge_sort_iterative, 1000, 30, 20)
 
+    test_heapify()
+    test_heap_sift_down()
+
+    test_sort(heap_sort)
+    stress_sort(heap_sort, 1000, 30, 20)
+
     test_sort(counting_sort)
 
     test_graph()
@@ -59,6 +65,22 @@ def test_merge():
     test_merge_with([1], [2], [1, 2])
     test_merge_with([2], [1], [1, 2])
     test_merge_with([1, 3, 5], [0, 4, 6], [0, 1, 3, 4, 5, 6])
+
+def test_heapify_with(l, a):
+    heapify(l)
+    assert(print_if_ne(l, a))
+
+def test_heapify():
+    test_heapify_with([2, 1], [2, 1])
+    test_heapify_with([1, 2], [2, 1])
+    test_heapify_with([1, 3, 5], [5, 3, 1])
+
+def test_heap_sift_down_with(l, i, len, a):
+    heap_sort_sift_down(l, i, len)
+    assert(print_if_ne(l, a))
+
+def test_heap_sift_down():
+    test_heap_sift_down_with([1, 2], 0, 2, [2, 1])
 
 def test_graph():
     g = Graph()
