@@ -3,6 +3,7 @@ import random
 from sort import *
 from graph import *
 from heap import *
+from deque import *
 
 def main():
     test_sort(insertion_sort)
@@ -32,6 +33,8 @@ def main():
     test_sort(counting_sort)
 
     test_graph()
+
+    test_deque()
 
     print("passed")
 
@@ -168,6 +171,64 @@ def test_heap():
     assert(h.extract() == 3)
     assert(h.extract() == 2)
     assert(h.extract() == 1)
+
+def test_deque():
+    d = Deque()
+
+    d.push_front(0)
+    assert(print_if_ne(d.size(), 1))
+    assert(print_if_ne(d.peak_front(), 0))
+    assert(print_if_ne(d.pop_front(), 0))
+    assert(print_if_ne(d.size(), 0))
+    assert(print_if_ne(d.peak_front(), None))
+    assert(print_if_ne(d.pop_front(), None))
+    d.push_front(1)
+    assert(print_if_ne(d.peak_front(), 1))
+    d.push_front(2)
+    assert(print_if_ne(d.peak_front(), 2))
+    d.push_front(3)
+    assert(print_if_ne(d.peak_front(), 3))
+    assert(print_if_ne(d.pop_front(), 3))
+    assert(print_if_ne(d.pop_front(), 2))
+    assert(print_if_ne(d.pop_front(), 1))
+
+    d.push_back(0)
+    assert(print_if_ne(d.size(), 1))
+    assert(print_if_ne(d.peak_back(), 0))
+    assert(print_if_ne(d.pop_back(), 0))
+    assert(print_if_ne(d.size(), 0))
+    assert(print_if_ne(d.peak_back(), None))
+    assert(print_if_ne(d.pop_back(), None))
+    d.push_back(1)
+    assert(print_if_ne(d.peak_back(), 1))
+    d.push_back(2)
+    assert(print_if_ne(d.peak_back(), 2))
+    d.push_back(3)
+    assert(print_if_ne(d.peak_back(), 3))
+    assert(print_if_ne(d.pop_back(), 3))
+    assert(print_if_ne(d.pop_back(), 2))
+    assert(print_if_ne(d.pop_back(), 1))
+
+    d.push_back(2)
+    d.push_back(3)
+    d.push_front(1)
+    d.push_front(0)
+    assert(print_if_ne(d.size(), 4))
+    assert(print_if_ne(d.peak_back(), 3))
+    assert(print_if_ne(d.peak_front(), 0))
+    assert(print_if_ne(d.pop_back(), 3))
+    assert(print_if_ne(d.pop_back(), 2))
+    assert(print_if_ne(d.pop_back(), 1))
+    assert(print_if_ne(d.pop_back(), 0))
+
+    d.push_back(2)
+    d.push_back(3)
+    d.push_front(1)
+    d.push_front(0)
+    assert(print_if_ne(d.pop_front(), 0))
+    assert(print_if_ne(d.pop_front(), 1))
+    assert(print_if_ne(d.pop_front(), 2))
+    assert(print_if_ne(d.pop_front(), 3))
 
 if __name__ == "__main__":
     main()
